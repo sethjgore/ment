@@ -1,0 +1,10 @@
+{
+  "name": "gulp-build-script",
+  "version": "0.0.1",
+  "description": "Gulp.js build script intended for use with HTML5 Boilerplate.",
+  "repository": "https://github.com/rejas/gulp-build-script.git",
+  "devDependencies": {
+    "gulp": "^3.6.0",
+    "gulp-clean": "^0.2.4"
+  }
+}
