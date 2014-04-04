@@ -9,5 +9,11 @@ gulp.task('clean', function () {
                .pipe(clean({ force: true }));
 });
 
+// Copy all application files into the 'dist' folder
+gulp.task('copy', function () {
+    return gulp.src(['src/**/*'])
+               .pipe(gulp.dest('dist'));
+});
+
 // The default task (called when you run `gulp`)
-gulp.task('default', ['clean']);
+gulp.task('default', ['clean', 'copy']);
