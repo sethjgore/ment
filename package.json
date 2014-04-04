@@ -5,6 +5,7 @@
   "repository": "https://github.com/rejas/gulp-build-script.git",
   "devDependencies": {
     "gulp": "^3.6.0",
-    "gulp-clean": "^0.2.4"
+    "gulp-clean": "^0.2.4",
+    "gulp-csso": "^0.2.6"
   }
 }
