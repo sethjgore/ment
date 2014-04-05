@@ -6,6 +6,9 @@
   "devDependencies": {
     "gulp": "^3.6.0",
     "gulp-clean": "^0.2.4",
-    "gulp-csso": "^0.2.6"
+    "gulp-csso": "^0.2.6",
+    "gulp-jshint": "^1.5.3",
+    "gulp-uglify": "^0.2.1",
+    "jshint-stylish": "^0.1.5"
   }
 }

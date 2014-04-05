@@ -3,6 +3,9 @@
 var gulp    = require('gulp');
 var clean   = require('gulp-clean');
 var csso    = require('gulp-csso');
+var jshint  = require('gulp-jshint');
+var stylish = require('jshint-stylish');
+var uglify  = require('gulp-uglify');
 
 // Clear the destination folder
 gulp.task('clean', function () {
@@ -23,5 +26,20 @@ gulp.task('css', function () {
                .pipe(gulp.dest('dist/css'))
 });
 
+// Detect errors and potential problems in your JavaScript code (except vendor scripts)
+// You can enable or disable default JSHint options in the .jshintrc file
+gulp.task('jshint', function () {
+    return gulp.src(['src/js/**/*.js', '!src/js/vendor/**'])
+               .pipe(jshint('.jshintrc'))
+               .pipe(jshint.reporter(stylish));
+});
+
+// Uglify and copy all JavaScript
+gulp.task('js', function () {
+    return gulp.src(['src/js/**/*.js'])
+               .pipe(uglify())
+               .pipe(gulp.dest('dist/js'));
+});
+
 // The default task (called when you run `gulp`)
-gulp.task('default', ['clean', 'copy', 'css']);
+gulp.task('default', ['clean', 'copy', 'css', 'jshint', 'js']);
