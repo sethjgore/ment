@@ -3,6 +3,7 @@
 var gulp    = require('gulp');
 var clean   = require('gulp-clean');
 var csso    = require('gulp-csso');
+var imagemin = require('gulp-imagemin');
 var jshint  = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 var uglify  = require('gulp-uglify');
@@ -13,9 +14,9 @@ gulp.task('clean', function () {
                .pipe(clean({ force: true }));
 });
 
-// Copy all application files into the 'dist' folder except user css
+// Copy all application files into the 'dist' folder except user css and images
 gulp.task('copy', ['clean'], function () {
-    return gulp.src(['src/**/*', '!src/css/**/*.css'])
+    return gulp.src(['src/**/*', '!src/css/**/*.css', '!src/img/**/*'])
                .pipe(gulp.dest('dist'));
 });
 
@@ -41,5 +42,12 @@ gulp.task('js', function () {
                .pipe(gulp.dest('dist/js'));
 });
 
+// Minify and copy images
+gulp.task('images', function () {
+    return gulp.src('src/img/**/*')
+               .pipe(imagemin())
+               .pipe(gulp.dest('dist/img'));
+});
+
 // The default task (called when you run `gulp`)
-gulp.task('default', ['clean', 'copy', 'css', 'jshint', 'js']);
+gulp.task('default', ['clean', 'copy', 'css', 'jshint', 'js', 'images']);
