@@ -2,6 +2,7 @@
 // https://github.com/gulpjs/gulp
 var gulp    = require('gulp');
 var clean   = require('gulp-clean');
+var csslint = require('gulp-csslint');
 var csso    = require('gulp-csso');
 var imagemin = require('gulp-imagemin');
 var jshint  = require('gulp-jshint');
@@ -25,6 +26,13 @@ gulp.task('css', function () {
     return gulp.src(['src/css/main.css', 'src/css/normalize.css'])
                .pipe(csso())
                .pipe(gulp.dest('dist/css'))
+});
+
+// Detect errors and potential problems in your css code
+gulp.task('csslint', function () {
+    return gulp.src(['src/css/main.css', 'src/css/normalize.css'])
+               .pipe(csslint('.csslintrc'))
+               .pipe(csslint.reporter())
 });
 
 // Detect errors and potential problems in your JavaScript code (except vendor scripts)
