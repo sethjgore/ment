@@ -8,6 +8,8 @@ var imagemin = require('gulp-imagemin');
 var jshint  = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 var uglify  = require('gulp-uglify');
+var CacheBuster = require('gulp-cachebust');
+var cachebust   = new CacheBuster();
 
 // Clear the destination folder
 gulp.task('clean', function () {
@@ -25,6 +27,7 @@ gulp.task('copy', ['clean'], function () {
 gulp.task('css', function () {
     return gulp.src(['src/css/main.css', 'src/css/normalize.css'])
                .pipe(csso())
+               .pipe(cachebust.resources())
                .pipe(gulp.dest('dist/css'))
 });
 
@@ -47,6 +50,7 @@ gulp.task('jshint', function () {
 gulp.task('js', function () {
     return gulp.src(['src/js/**/*.js'])
                .pipe(uglify())
+               .pipe(cachebust.resources())
                .pipe(gulp.dest('dist/js'));
 });
 
@@ -57,8 +61,15 @@ gulp.task('images', function () {
                .pipe(gulp.dest('dist/img'));
 });
 
+// Inject cachebusting references into HTML
+gulp.task('html', ['css', 'js'], function () {
+    return gulp.src('src/*.html')
+               .pipe(cachebust.references())
+               .pipe(gulp.dest('dist'));
+});
+
 // Runs all checks on the code
 gulp.task('check', ['jshint', 'csslint']);
 
 // The default task (called when you run `gulp`)
-gulp.task('default', ['check', 'clean', 'copy', 'css', 'js', 'images']);
+gulp.task('default', ['check', 'clean', 'copy', 'images', 'html']);
