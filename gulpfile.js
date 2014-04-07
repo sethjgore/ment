@@ -57,5 +57,8 @@ gulp.task('images', function () {
                .pipe(gulp.dest('dist/img'));
 });
 
+// Runs all checks on the code
+gulp.task('check', ['jshint', 'csslint']);
+
 // The default task (called when you run `gulp`)
-gulp.task('default', ['clean', 'copy', 'css', 'jshint', 'js', 'images']);
+gulp.task('default', ['check', 'clean', 'copy', 'css', 'js', 'images']);
