@@ -72,4 +72,4 @@ gulp.task('html', ['css', 'js'], function () {
 gulp.task('check', ['jshint', 'csslint']);
 
 // The default task (called when you run `gulp`)
-gulp.task('default', ['check', 'clean', 'copy', 'images', 'html']);
+gulp.task('default', ['check', 'copy', 'images', 'html']);
