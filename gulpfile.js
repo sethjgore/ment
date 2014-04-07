@@ -30,7 +30,7 @@ gulp.task('css', function () {
 
 // Detect errors and potential problems in your css code
 gulp.task('csslint', function () {
-    return gulp.src(['src/css/main.css', 'src/css/normalize.css'])
+    return gulp.src(['src/css/main.css', '!src/css/normalize.css'])
                .pipe(csslint('.csslintrc'))
                .pipe(csslint.reporter())
 });
