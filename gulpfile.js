@@ -7,9 +7,16 @@ var csso        = require('gulp-csso');
 var imagemin    = require('gulp-imagemin');
 var jshint      = require('gulp-jshint');
 var uglify      = require('gulp-uglify');
+var gutil       = require('gulp-util');
 var cachebust   = require('gulp-cachebust')();
 
+var express     = require('express');
 var stylish     = require('jshint-stylish');
+var tiny        = require('tiny-lr');
+
+var LIVERELOAD_PORT = 35729;
+var EXPRESS_PORT    = 4000;
+var EXPRESS_ROOT    = __dirname + '/src';
 
 // Clear the destination folder
 gulp.task('clean', function () {
@@ -66,6 +73,28 @@ gulp.task('html', ['clean', 'css', 'js'], function () {
     return gulp.src('src/*.html')
         .pipe(cachebust.references())
         .pipe(gulp.dest('dist'));
+});
+
+// Start express- and live-reload-server
+gulp.task('server', function () {
+    var server = express();
+    server.use(require('connect-livereload')());
+    server.use(express.static(EXPRESS_ROOT));
+    server.listen(EXPRESS_PORT, function() {
+        gutil.log('Listening on port ' + EXPRESS_PORT);
+    });
+
+    var lr = tiny();
+    lr.listen(LIVERELOAD_PORT, function (err) {
+        if (err) {
+            gutil.log(err);
+        }
+    });
+
+    gulp.watch(['src/**/*.html', 'src/css/**/*.css', 'src/js/**/*.js'] , function (event) {
+        gulp.src(event.path, {read: false})
+            .pipe(require('gulp-livereload')(lr));
+    });
 });
 
 // Runs all checks on the code
