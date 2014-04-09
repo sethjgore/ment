@@ -25,7 +25,7 @@ gulp.task('copy', ['clean'], function () {
 });
 
 // Optimizes CSS files
-gulp.task('css', function () {
+gulp.task('css', ['clean'], function () {
     return gulp.src(['src/css/main.css', 'src/css/normalize.css'])
         .pipe(csso())
         .pipe(buster.resources())
@@ -48,7 +48,7 @@ gulp.task('jshint', function () {
 });
 
 // Uglify and copy all JavaScript
-gulp.task('js', function () {
+gulp.task('js', ['clean'], function () {
     return gulp.src(['src/js/**/*.js'])
         .pipe(uglify())
         .pipe(buster.resources())
@@ -56,14 +56,14 @@ gulp.task('js', function () {
 });
 
 // Minify and copy images
-gulp.task('images', function () {
+gulp.task('images', ['clean'], function () {
     return gulp.src('src/img/**/*')
         .pipe(imagemin())
         .pipe(gulp.dest('dist/img'));
 });
 
 // Inject cachebusting references into HTML
-gulp.task('html', ['css', 'js'], function () {
+gulp.task('html', ['clean', 'css', 'js'], function () {
     return gulp.src('src/*.html')
         .pipe(buster.references())
         .pipe(gulp.dest('dist'));
