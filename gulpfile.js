@@ -6,11 +6,10 @@ var csslint     = require('gulp-csslint');
 var csso        = require('gulp-csso');
 var imagemin    = require('gulp-imagemin');
 var jshint      = require('gulp-jshint');
-var stylish     = require('jshint-stylish');
 var uglify      = require('gulp-uglify');
-var cachebust   = require('gulp-cachebust');
+var cachebust   = require('gulp-cachebust')();
 
-var buster      = new cachebust();
+var stylish     = require('jshint-stylish');
 
 // Clear the destination folder
 gulp.task('clean', function () {
@@ -28,7 +27,7 @@ gulp.task('copy', ['clean'], function () {
 gulp.task('css', ['clean'], function () {
     return gulp.src(['src/css/main.css', 'src/css/normalize.css'])
         .pipe(csso())
-        .pipe(buster.resources())
+        .pipe(cachebust.resources())
         .pipe(gulp.dest('dist/css'))
 });
 
@@ -51,7 +50,7 @@ gulp.task('jshint', function () {
 gulp.task('js', ['clean'], function () {
     return gulp.src(['src/js/**/*.js'])
         .pipe(uglify())
-        .pipe(buster.resources())
+        .pipe(cachebust.resources())
         .pipe(gulp.dest('dist/js'));
 });
 
@@ -65,7 +64,7 @@ gulp.task('images', ['clean'], function () {
 // Inject cachebusting references into HTML
 gulp.task('html', ['clean', 'css', 'js'], function () {
     return gulp.src('src/*.html')
-        .pipe(buster.references())
+        .pipe(cachebust.references())
         .pipe(gulp.dest('dist'));
 });
 
