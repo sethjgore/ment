@@ -7,9 +7,8 @@ Gulp.js build script intended for use with HTML5 Boilerplate. It's designed to e
 
 ## What it does
 
-* Minifies Javascript
-* Combines and minifies CSS
-* Cache-busting
+* Minifies and uglify Javascript
+* Cache-busts and minifies CSS
 * Optimizes images (with imagemin)
 * Runs your JavaScript through a code quality tool, JSHint (optional)
 * Runs your CSS through a code quality tool, CSSLint (optional)
