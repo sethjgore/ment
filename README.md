@@ -28,4 +28,4 @@ Run the default task for deploying the site:  `gulp`
 
 Run code checks like csslint and jshint: `gulp check`
 
-Start a static server with livereload functionality: `gulp server`
+Start a static server with livereload functionality: `gulp serve`

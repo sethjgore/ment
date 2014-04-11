@@ -77,7 +77,7 @@ gulp.task('html', ['clean', 'css', 'js'], function () {
 });
 
 // Start express- and live-reload-server
-gulp.task('server', function () {
+gulp.task('serve', function () {
     var server = express();
     server.use(require('connect-livereload')());
     server.use(express.static(EXPRESS_ROOT));
