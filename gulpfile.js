@@ -6,6 +6,7 @@ var csslint     = require('gulp-csslint');
 var csso        = require('gulp-csso');
 var imagemin    = require('gulp-imagemin');
 var jshint      = require('gulp-jshint');
+var greload     = require('gulp-livereload');
 var uglify      = require('gulp-uglify');
 var gutil       = require('gulp-util');
 var cachebust   = require('gulp-cachebust')();
@@ -13,6 +14,7 @@ var cachebust   = require('gulp-cachebust')();
 var express     = require('express');
 var stylish     = require('jshint-stylish');
 var tiny        = require('tiny-lr');
+var connect     = require('connect-livereload');
 
 var SRC             = 'src/';
 var DST             = 'dist/';
@@ -79,7 +81,7 @@ gulp.task('html', ['clean', 'css', 'js'], function () {
 // Start express- and live-reload-server
 gulp.task('serve', function () {
     var server = express();
-    server.use(require('connect-livereload')());
+    server.use(connect());
     server.use(express.static(EXPRESS_ROOT));
     server.listen(EXPRESS_PORT, function() {
         gutil.log('Listening on port ' + EXPRESS_PORT);
@@ -94,7 +96,7 @@ gulp.task('serve', function () {
 
     gulp.watch([SRC + '**/*.html', SRC + 'css/**/*.css', SRC + 'js/**/*.js'] , function (event) {
         gulp.src(event.path, {read: false})
-            .pipe(require('gulp-livereload')(lr));
+            .pipe(greload(lr));
     });
 });
 
