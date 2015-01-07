@@ -1,0 +1,27 @@
+{
+  "name": "gut",
+  "homepage": "https://github.com/sethjgore/gut",
+  "main": "./gut.sass",
+  "authors": [
+    "sethjgore <sethjgore@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "9a52e766a6",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "9a52e766a66ff2697ab8008b082cba2f2080a18a"
+  },
+  "_source": "git@github.com:sethjgore/gut.git",
+  "_target": "*",
+  "_originalSource": "git@github.com:sethjgore/gut",
+  "_direct": true
+}

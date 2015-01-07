@@ -1,0 +1,67 @@
+
+///////////////////
+//DISPLAY: FLEX
+///////////////////
+
+.flex, .is__flex
+  display: flex
+
+
+///////////////////
+//JUSTIFY-CONTENT:
+//ALIGN-ITEMS:
+//ALIGN-CONTENT:
+///////////////////
+
+.flex
+  &--xy
+    justify-content: center
+    align-items: center
+
+  &--x
+    justify-content: center
+
+  &--y
+    align-items: center
+
+  &--spacearound, &--xsa
+    justify-content: space-around
+
+  &--spacebetween, &--xsb
+    justify-content: space-between
+
+  &--yt,&--xl,&--ystart,&--xstart
+    align-items: flex-start
+
+  &--yb,&--xr,&--yend,&--xend
+    align-items: flex-end
+
+
+///////////////////
+//FLEX-DIRECTION:
+///////////////////
+
+.flex__direction--row, .fx__row
+  flex-direction: row
+
+.flex__direction--col, .fx__col
+  flex-direction: column
+
+///////////////////
+//FLEX-DIRECTION:
+///////////////////
+
+.flex__item
+  flex: 1
+
+///////////////////
+//FLEX-WRAP
+///////////////////
+.flex--nowrap
+  flex-wrap: nowrap
+
+.flex--wrap
+  flex-wrap: wrap
+
+.flex--wrap-reverse
+  flex-wrap: wrap-reverse

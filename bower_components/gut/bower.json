@@ -1,0 +1,18 @@
+{
+  "name": "gut",
+  "version": "0.0.0",
+  "homepage": "https://github.com/sethjgore/gut",
+  "main": "./gut.sass",
+  "authors": [
+    "sethjgore <sethjgore@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

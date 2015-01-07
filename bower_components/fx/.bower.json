@@ -1,0 +1,32 @@
+{
+  "name": "fx",
+  "homepage": "http://github.com/sethjgore/fx",
+  "authors": [
+    "sethjgore <sethjgore@gmail.com>"
+  ],
+  "main": "_fx.sass",
+  "keywords": [
+    "flexbox",
+    "flex",
+    "box"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "a3d3a8db58",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a3d3a8db58d672bcf6e3d612daf53f2145a778af"
+  },
+  "_source": "git@github.com:sethjgore/fx.git",
+  "_target": "*",
+  "_originalSource": "git@github.com:sethjgore/fx",
+  "_direct": true
+}

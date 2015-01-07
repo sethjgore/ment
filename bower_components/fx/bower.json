@@ -1,0 +1,23 @@
+{
+  "name": "fx",
+  "version": "0.0.1",
+  "homepage": "http://github.com/sethjgore/fx",
+  "authors": [
+    "sethjgore <sethjgore@gmail.com>"
+  ],
+  "main": "_fx.sass",
+  "keywords": [
+    "flexbox",
+    "flex",
+    "box"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
